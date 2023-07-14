@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_wall_social_media_app/pages/page_exports.dart';
 import 'package:the_wall_social_media_app/widgets/widget_export.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,12 +29,27 @@ class _HomePageState extends State<HomePage> {
         "UserEmail": currentUser.email,
         "Message": textController.text,
         "TimeStamp": Timestamp.now(),
+        "Likes": [],
       });
     }
     // clear the textfield
     setState(() {
       textController.clear();
     });
+  }
+
+  // navigate to profile page
+  void goToProfilePage() {
+    // pop menu drawer
+    Navigator.pop(context);
+
+    // go to profile page
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ProfilePage(),
+      ),
+    );
   }
 
   @override
@@ -44,12 +60,10 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.grey[900],
         centerTitle: true,
         title: const Text('The Wall'),
-        actions: [
-          IconButton(
-            onPressed: signOut,
-            icon: const Icon(Icons.logout),
-          ),
-        ],
+      ),
+      drawer: MyDrawer(
+        onProfileTap: goToProfilePage,
+        onSignOut: signOut,
       ),
       body: Center(
         child: Column(
@@ -71,6 +85,8 @@ class _HomePageState extends State<HomePage> {
                         return WallPost(
                           message: post['Message'],
                           user: post['UserEmail'],
+                          postId: post.id,
+                          likes: List<String>.from(post['Likes'] ?? []),
                         );
                       },
                     );
