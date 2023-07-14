@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "947788747831",
+    "project_id": "the-wall-social-media-app",
+    "storage_bucket": "the-wall-social-media-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947788747831:android:2e5f235675de3f5c1adbb2",
+        "android_client_info": {
+          "package_name": "com.example.the_wall_social_media_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947788747831-tontpv73ars6giive91ghdl6e3k45b04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIdLgdtn5f3R4rVhnXIZUgok5Vk47zT5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947788747831-tontpv73ars6giive91ghdl6e3k45b04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
