@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:the_wall_social_media_app/auth/auth_exports.dart';
 import 'package:the_wall_social_media_app/firebase_options.dart';
-import 'package:the_wall_social_media_app/pages/page_exports.dart';
+import 'package:the_wall_social_media_app/theme/theme_exports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,9 +24,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'The Wall',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: const AuthPage(),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_wall_social_media_app/helper/helper_methods.dart';
 import 'package:the_wall_social_media_app/pages/page_exports.dart';
 import 'package:the_wall_social_media_app/widgets/widget_export.dart';
 
@@ -55,9 +56,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
         centerTitle: true,
         title: const Text('The Wall'),
       ),
@@ -87,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                           user: post['UserEmail'],
                           postId: post.id,
                           likes: List<String>.from(post['Likes'] ?? []),
+                          time: formatDate(post['TimeStamp']),
                         );
                       },
                     );
