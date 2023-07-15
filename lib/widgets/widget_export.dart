@@ -5,3 +5,5 @@ export 'package:the_wall_social_media_app/widgets/like_button.dart';
 export 'package:the_wall_social_media_app/widgets/drawer.dart';
 export 'package:the_wall_social_media_app/widgets/my_list_tile.dart';
 export 'package:the_wall_social_media_app/widgets/text_box.dart';
+export 'package:the_wall_social_media_app/widgets/comments.dart';
+export 'package:the_wall_social_media_app/widgets/comment_button.dart';

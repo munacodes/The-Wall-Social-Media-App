@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_wall_social_media_app/widgets/widget_export.dart';
@@ -33,12 +34,26 @@ class _RegisterPageState extends State<RegisterPage> {
       return;
     }
 
+    // try creating the user
     try {
+      // create the user
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
+
+      // after creating the user, create a new document in cloud firestore called Users
+      FirebaseFirestore.instance
+          .collection('Users')
+          .doc(userCredential.user!.email)
+          .set({
+        // Using split '@'[0] tells it to split the email where
+        //there is '@' which is index [0] and use it as a username
+        'username': _emailController.text.split('@')[0], // initial username
+        'bio': 'Empty bio...' // initially empty bio
+      });
+
       // pop loading circle
       if (context.mounted) Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
